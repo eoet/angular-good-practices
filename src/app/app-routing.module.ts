@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { CustomPreloadStrategy } from './core/custom-preload-strategy';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
+      data: {
+        preload: true
+      }
   },
   {
     path: 'users',
@@ -48,8 +52,15 @@ const routes: Routes = [
   },
 ];
 
+// Using CustomPreloadStrategy to preload the frequent modules.
+// Default: false
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: CustomPreloadStrategy,
+    }),
+  ],
+  providers: [CustomPreloadStrategy],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
