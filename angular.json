@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-good-practices"
+    }
+  },
+  "defaultProject": "angular-good-practices",
+  "cli": {
+    "analytics": false
+  }
 }

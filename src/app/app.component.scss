@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+}
+
+main {
+  background: #71FA4C;
+}
+
+app-header {
+  display: flex;
+  flex-direction: column;
+}
+.main-container {
+  display: flex;
+  flex: 1 1 100%;
+  app-sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 300px;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+  }
+}
+app-footer {
+  display: flex;
+  flex-direction: column;
+}

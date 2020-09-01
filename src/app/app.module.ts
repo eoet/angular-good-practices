@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    // RouterModule.forRoot([]),
     AppRoutingModule,
     LayoutModule
   ],

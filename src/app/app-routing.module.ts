@@ -9,36 +9,47 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
   },
   {
     path: 'users',
-    loadChildren: './modules/users/users.module#UsersModule',
+    loadChildren: () =>
+      import('./modules/users/users.module').then((m) => m.UsersModule),
   },
   {
     path: 'account-settings',
-    loadChildren: './modules/account-settings/account-settings.module#AccountSettingsModule',
+    loadChildren: () =>
+      import('./modules/account-settings/account-settings.module').then(
+        (m) => m.AccountSettingsModule
+      ),
   },
   {
     path: 'login',
-    loadChildren: './modules/login/login.module#LoginModule',
+    loadChildren: () =>
+      import('./modules/login/login.module').then((m) => m.LoginModule),
     data: {
       showHeader: false,
-      showSidebar: false
-    }
+      showSidebar: false,
+    },
   },
   {
     path: 'registration',
-    loadChildren: './modules/registration/registration.module#RegistrationModule',
+    loadChildren: () =>
+      import('./modules/registration/registration.module').then(
+        (m) => m.RegistrationModule
+      ),
     data: {
       showHeader: false,
-      showSidebar: false
-    }
-  }
+      showSidebar: false,
+    },
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

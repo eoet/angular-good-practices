@@ -1,0 +1,16 @@
+:host {
+  background: #70FBFD;
+  padding: 30px;
+}
+
+header.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  nav.right-nav a {
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
