@@ -58,6 +58,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: CustomPreloadStrategy,
+      useHash: true
     }),
   ],
   providers: [CustomPreloadStrategy],
