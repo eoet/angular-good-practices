@@ -1,10 +1,13 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { GlobalErrorHandler } from './core/global-error-handler';
+import { ServerErrorInterceptor } from './interceptors/server-error.interceptor';
 import { LayoutModule } from './layout/layout.module';
-import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -12,11 +15,20 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    // RouterModule.forRoot([]),
+    HttpClientModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler, useClass: GlobalErrorHandler
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
